@@ -16,14 +16,13 @@ export default function Home() {
 
     const handleCategoryChange = (e) => {
         setCategory(e.target.value);
-        setSubcategory(""); // Reset subcategory when category changes
+        setSubcategory(""); 
     };
 
     const handleSubcategoryChange = (e) => setSubcategory(e.target.value);
 
     const handleCalculate = (e) => {
         e.preventDefault();
-        // Calculation logic goes here
         alert(`Calculating loan for ${category} - ${subcategory} with deposit ${deposit} and period ${loanPeriod}`);
     };
 
@@ -35,7 +34,6 @@ export default function Home() {
         <div className="min-h-screen bg-gray-100 p-6">
             <h1 className="text-3xl font-bold text-center mb-6">Loan Management System</h1>
 
-            {/* Loan Categories Section */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 {categories.map((category, index) => (
                     <div key={index} className="bg-white p-4 rounded-2xl shadow-md">
@@ -49,7 +47,6 @@ export default function Home() {
                 ))}
             </div>
 
-            {/* Loan Calculator Section */}
             <div className="mt-8 bg-white p-6 rounded-2xl shadow-md">
                 <h2 className="text-xl font-semibold mb-4">Loan Calculator</h2>
                 <form className="grid grid-cols-1 md:grid-cols-2 gap-4" onSubmit={handleCalculate}>

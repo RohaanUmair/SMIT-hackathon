@@ -1,25 +1,44 @@
 'use client';
 import { useState } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export default function Register() {
     const [formData, setFormData] = useState({ name: "", email: "", password: "" });
     const [error, setError] = useState("");
+    const [success, setSuccess] = useState("");
     const router = useRouter();
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Simple validation for empty fields
+
         if (!formData.name || !formData.email || !formData.password) {
             setError("All fields are required");
-        } else {
-            // Handle registration logic here (e.g., save data to database)
-            alert("Registration successful!");
-            router.push("/login");
+            return;
+        }
+
+        try {
+            const response = await fetch("http://localhost:5000/api/register", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.message || "Something went wrong");
+            }
+
+            setSuccess("Registration successful! Redirecting...");
+            setTimeout(() => router.push("/login"), 2000);
+        } catch (error) {
+            setError(error.message);
         }
     };
 
@@ -29,6 +48,7 @@ export default function Register() {
                 <h2 className="text-2xl font-semibold text-center mb-4">Create an Account</h2>
 
                 {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
+                {success && <p className="text-green-500 text-sm mb-4">{success}</p>}
 
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">

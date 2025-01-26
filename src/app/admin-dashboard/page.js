@@ -2,10 +2,10 @@
 import React, { useState } from 'react';
 
 const AdminPanel = () => {
-  const [applications, setApplications] = useState([]); // Fetch applications from DB
-  const [loans, setLoans] = useState([]); // Fetch loan details from DB
-  const [slots, setSlots] = useState([]); // Available slots
-  const [appointments, setAppointments] = useState([]); // Appointments for users
+  const [applications, setApplications] = useState([]);
+  const [loans, setLoans] = useState([]);
+  const [slots, setSlots] = useState([]);
+  const [appointments, setAppointments] = useState([]);
 
   const [cityFilter, setCityFilter] = useState('');
   const [countryFilter, setCountryFilter] = useState('');
@@ -29,8 +29,7 @@ const AdminPanel = () => {
   return (
     <div className="min-h-screen bg-gray-100 py-10 px-5">
       <h1 className="text-3xl font-bold text-center mb-10">Admin Panel</h1>
-      
-      {/* Application Management Section */}
+
       <section className="mb-10 p-6 bg-white shadow-md rounded-lg">
         <h2 className="text-2xl font-semibold mb-5">Application Management</h2>
         <div className="mb-5 flex gap-5">
@@ -87,7 +86,6 @@ const AdminPanel = () => {
         </table>
       </section>
 
-      {/* Loan Details Section */}
       <section className="mb-10 p-6 bg-white shadow-md rounded-lg">
         <h2 className="text-2xl font-semibold mb-5">Loan Details</h2>
         <table className="min-w-full border-collapse border border-gray-200">
@@ -116,7 +114,6 @@ const AdminPanel = () => {
         </table>
       </section>
 
-      {/* Appointment Scheduling Section */}
       <section className="p-6 bg-white shadow-md rounded-lg">
         <h2 className="text-2xl font-semibold mb-5">Appointment Scheduling</h2>
         <button

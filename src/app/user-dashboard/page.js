@@ -2,7 +2,6 @@
 import { useState } from "react";
 
 export default function UserDashboard() {
-    // Mock user loan data, this can be fetched from your database
     const [loanHistory, setLoanHistory] = useState([
         {
             id: 1,
@@ -19,7 +18,6 @@ export default function UserDashboard() {
         }
     ]);
 
-    // Calculate remaining balance
     const calculateRemainingBalance = (loanAmount, paidAmount) => loanAmount - paidAmount;
 
     return (

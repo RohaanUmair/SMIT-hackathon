@@ -12,12 +12,10 @@ export default function LoanRequestForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Validate and handle form submission logic here
         if (!category || !subcategory || !guarantor1.name || !guarantor2.name || !personalInfo.address || !personalInfo.phone) {
             setError("Please fill in all required fields");
         } else {
             alert("Loan request submitted successfully!");
-            // Reset form or redirect as needed
         }
     }; 
 
@@ -29,7 +27,6 @@ export default function LoanRequestForm() {
                 {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
 
                 <form onSubmit={handleSubmit}>
-                    {/* Loan Category and Subcategory */}
                     <div className="mb-4">
                         <label htmlFor="category" className="block text-sm font-medium text-gray-700">Loan Category</label>
                         <select
@@ -89,7 +86,6 @@ export default function LoanRequestForm() {
                         </select>
                     </div>
 
-                    {/* Guarantor Details */}
                     <h3 className="text-lg font-semibold mb-2">Guarantor 1 Details</h3>
                     <div className="mb-4">
                         <label className="block text-sm font-medium text-gray-700">Name</label>
@@ -132,7 +128,6 @@ export default function LoanRequestForm() {
                         />
                     </div>
 
-                    {/* Guarantor 2 Details */}
                     <h3 className="text-lg font-semibold mb-2">Guarantor 2 Details</h3>
                     <div className="mb-4">
                         <label className="block text-sm font-medium text-gray-700">Name</label>
@@ -175,7 +170,6 @@ export default function LoanRequestForm() {
                         />
                     </div>
 
-                    {/* Personal Information */}
                     <h3 className="text-lg font-semibold mb-2">Personal Information</h3>
                     <div className="mb-4">
                         <label className="block text-sm font-medium text-gray-700">Address</label>
@@ -198,7 +192,6 @@ export default function LoanRequestForm() {
                         />
                     </div>
 
-                    {/* Optional Salary Sheet */}
                     <div className="mb-4">
                         <label className="block text-sm font-medium text-gray-700">Salary Sheet (Optional)</label>
                         <input
@@ -208,7 +201,6 @@ export default function LoanRequestForm() {
                         />
                     </div>
 
-                    {/* Submit Button */}
                     <button
                         type="submit"
                         className="w-full bg-green-500 text-white py-2 rounded-md hover:bg-green-600"
